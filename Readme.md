@@ -1,4 +1,4 @@
-# <img src="./images/logo.png" width="100"> CursoCeroMBD
+# <img src="images/logo.png" width="100"> CursoCeroMBD
 
 ### Repositorio para el temario del curso 0 del Máster de Big Data, de la Escuela Técnica Superior de Ingeniería de ICAI (Universidad Pontificia Comillas)
 En este repositorio encontrarás el temario que se imparcirá durante el curso 0. Durante las semanas previas es importante, sobre todo si no se ha trabajado con algunas de las tecnologías que aquí se citan, que se revise el temario y se pruebe a hacer las tareas planteadas.
@@ -11,7 +11,7 @@ Este repositorio cubre:
 - 05. Servicios de Red - En clase explicaremos los conceptos que se indican.
 - 06. SQL: modelo de datos y sentencias básicas: Instalar PostreSQL, Importar la base de datos, y revisar la teoría antes de que empecemos!!.
 
-<img src="./images/planificacion.png">
+<img src="images/planificacion.png">
 
 Disfruta de este curso 0!!! 
 
