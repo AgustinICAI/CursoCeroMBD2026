@@ -49,7 +49,7 @@ SELECT first_name FROM customer;
 ```
 
 Ejemplo de salida:
-*![alt text](https://raw.githubusercontent.com/AgustinICAI/CursoCeroMBD2025/refs/heads/main/images/sql001.png)
+*![alt text](https://raw.githubusercontent.com/AgustinICAI/CursoCeroMBD2025/refs/heads/main/images/sql0001.png)
 
 En el ejemplo se ha añadido un punto y coma (;) al final de la instrucción SELECT. El punto y coma no forma parte de la instrucción SQL. Se utiliza para señalar a PostgreSQL el final de una declaración SQL. El punto y coma también se utiliza para separar dos sentencias SQL.
 
