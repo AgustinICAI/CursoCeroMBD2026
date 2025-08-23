@@ -16,7 +16,7 @@ El overhead que introducen los hipervisor modernos está entre 9-12% de CPU.
 - Hyper-V (opción Windows)
 - WSL
 
-![alt text](images/virtualizacionArchitecture.png)
+![alt text](https://raw.githubusercontent.com/AgustinICAI/CursoCeroMBD2025/refs/heads/main/images/virtualizacionArchitecture.png)
 
 
 ## Otros tipos de virtualizaciones
