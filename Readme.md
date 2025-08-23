@@ -4,7 +4,7 @@
 En este repositorio encontrarás el temario que se imparcirá durante el curso 0. Durante las semanas previas es importante, sobre todo si no se ha trabajado con algunas de las tecnologías que aquí se citan, que se revise el temario y se pruebe a hacer las tareas planteadas.
 
 Este repositorio cubre:
-- 01. Introducción a máquinas Virtuales: *¡¡ Importante traer la máquina virtual instalada ya para el primer día si podéis!!*
+- 01. Introducción a máquinas Virtuales:
 - 02. Introducción a Sistemas Linux
 - 03. Scripting: en bash
 - 04. Trabajar Git Oriented - previamente instalar el cliente bash de git, y algún agente gráfico. En clase utilizaremos estos clientes para apoyar la explicación.
