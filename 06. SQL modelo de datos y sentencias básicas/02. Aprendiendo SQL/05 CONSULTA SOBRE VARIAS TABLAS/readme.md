@@ -64,13 +64,7 @@ LIMIT 10;
 
 # Ejercicios para realizar en clase:
 
-# Ejercicios de SQL con dataset NBA
 
-Lista de ejercicios de clase usando el dataset NBA. Los ejercicios están ordenados de menor a mayor dificultad y están diseñados para practicar **productos cartesianos**, **filtrado**, **agregaciones** y **comparaciones** en SQL.
-
----
-
-## Lista de ejercicios
 
 1. **Jugador con mayor número de puntos en un partido**  
    **Conceptos:** filtrado, ordenamiento (`ORDER BY`)
