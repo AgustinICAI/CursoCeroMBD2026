@@ -65,50 +65,32 @@ LIMIT 10;
 # Ejercicios para realizar en clase:
 
 
+1. **Jugador con más minutos que el promedio de minutos de su equipo en un partido**  
+   **Conceptos:** subquery, agregación (`AVG`), comparación entre filas
 
-1. **Jugador con mayor número de puntos en un partido**  
-   **Conceptos:** filtrado, ordenamiento (`ORDER BY`)
+2. **Jugador que anotó más del 50% de los puntos de su equipo en un partido**  
+   **Conceptos:** subquery, agregación (`SUM`), comparación entre filas
 
-2. **Jugador con más partidos jugados (nombre y puntos totales)**  
-   **Conceptos:** `COUNT`, `SUM`, `GROUP BY`, `ORDER BY`
+3. **Jugador con más rebotes ofensivos que la suma de los rebotes ofensivos de su equipo promedio por partido**  
+   **Conceptos:** subquery, agregación (`SUM`), comparación entre filas
 
-3. **Jugador que anotó más de 50 puntos en un partido**  
-   **Conceptos:** filtrado condicional (`WHERE`), ordenamiento
+4. **Jugador cuyo promedio de puntos por partido es mayor que el promedio de puntos de su equipo en la misma temporada**  
+   **Conceptos:** subquery, agregación (`AVG`, `SUM`), filtrado (`HAVING`), comparación entre filas
 
-4. **Jugador con más triples dobles**  
-   **Conceptos:** filtrado compuesto (`AND`), agregación (`COUNT`), `GROUP BY`, `ORDER BY`
+5. **Partidos donde un jugador anotó más del 30% de los puntos de su equipo en una temporada**  
+   **Conceptos:** subquery, agregación (`SUM`), filtrado (`HAVING`), comparación de valores
 
-5. **Jugador con más partidos en su año de draft, mostrando puntos totales y número de partidos**  
-   **Conceptos:** filtrado (`WHERE`), agrupación (`GROUP BY`), agregación (`SUM`, `COUNT`), ordenamiento
+6. **Jugador que ha jugado en más de 3 equipos diferentes a lo largo de su carrera**  
+   **Conceptos:** `COUNT(DISTINCT)`, `GROUP BY`, `HAVING`
 
-6. **Jugador con mayor porcentaje de triples en partidos con más de 5 intentos**  
-   **Conceptos:** filtrado condicional (`WHERE`), cálculo de porcentaje
+7. **Jugador cuyo plus-minus promedio en playoffs es mayor que el promedio de su equipo en los mismos partidos**  
+   **Conceptos:** subquery, agregación (`AVG`), comparación entre filas, filtrado (`HAVING`)
 
-7. **Jugador con más minutos que el promedio de su equipo en un partido**  
-   **Conceptos:** producto cartesiano, filtrado en `WHERE`, comparación de valores
+8. **Jugador con mayor número de minutos jugados en su año de draft, junto con total de puntos ese año**  
+   **Conceptos:** filtrado (`WHERE`), agrupación (`GROUP BY`), agregación (`SUM`), ordenamiento
 
-8. **Jugador que anotó más del 50% de los puntos de su equipo en un partido**  
-   **Conceptos:** producto cartesiano, filtrado condicional, comparación de valores
+9. **Jugador con mayor cantidad de rebotes ofensivos en una temporada**  
+   **Conceptos:** agrupación (`GROUP BY`), agregación (`SUM`), ordenamiento
 
-9. **Jugador con más rebotes ofensivos que su equipo promedio por partido**  
-   **Conceptos:** producto cartesiano, filtrado condicional, comparación de valores
-
-10. **Jugador cuyo promedio de puntos por partido es mayor que el promedio de su equipo en la misma temporada**  
-    **Conceptos:** producto cartesiano, agregación (`AVG`), filtrado (`HAVING`)
-
-11. **Jugador con mayor cantidad de rebotes ofensivos en una temporada**  
-    **Conceptos:** agrupación (`GROUP BY`), agregación (`SUM`), ordenamiento
-
-12. **Jugador cuyo plus-minus promedio en playoffs sea positivo y mayor que 10**  
-    **Conceptos:** filtrado (`WHERE`), agregación (`AVG`), `HAVING`
-
-13. **Jugador que ha jugado en más de 3 equipos diferentes a lo largo de su carrera**  
-    **Conceptos:** `COUNT(DISTINCT)`, agrupación (`GROUP BY`), filtrado (`HAVING`)
-
-14. **Partidos donde un jugador anotó más del 30% de los puntos de su equipo en una temporada**  
-    **Conceptos:** producto cartesiano, agregación (`SUM`), filtrado (`HAVING`), comparación de valores
-
-15. **Jugador con mayor número de minutos jugados en su año de draft, junto con total de puntos ese año**  
-    **Conceptos:** filtrado por año (`WHERE`), agrupación (`GROUP BY`), agregación (`SUM`), ordenamiento
-
----
+10. **Jugador con mayor porcentaje de triples en partidos donde lanzó más de 5 intentos**  
+    **Conceptos:** filtrado condicional (`WHERE`), cálculo de porcentaje, ordenamiento (`ORDER BY`)
