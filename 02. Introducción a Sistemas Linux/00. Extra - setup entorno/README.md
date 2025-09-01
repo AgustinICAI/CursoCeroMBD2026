@@ -1,4 +1,14 @@
-## Terminales recomendados
+## Instalar Visual Studio Code
+
+Se recomienda trabajar con el Ide de Microsoft llamado Code, y conectar la máquina virtual con el Ide. Se sigue trabajando en entorno windows, pero lo que pasa ejecutando en una máquina linux.
+
+#### Plus*: Integrar con copilot
+
+## Instalar Postgre (para aprender SQL durante le curso0, luego podéis borrarlo)
+
+## Instalar DBeaver: herramienta para conectar a cualquier tipo de base de datos relacional
+
+## Trabajar con algún terminales recomendados
 
 Para hacer más agradable la tarea de *shell scripting* recomendamos las siguientes
 terminales según OS:
@@ -27,5 +37,6 @@ chsh -s $(which zsh)
 # Instalación OhMyZsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+
 
 
