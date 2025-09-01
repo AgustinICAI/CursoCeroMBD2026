@@ -43,29 +43,30 @@ Es importante que SQL no distingue entre mayúsculas y minúsculas. Significa qu
 
 ### Primer ejemplo de SELECT
 
-Vamos a usar el motor Postgre SQL y la base de datos importada, para empezar a trabajar con la declaración SELECT para consultar datos de un ejemplo de columna. Este ejemplo usa la instrucción SELECT para encontrar los nombres (first_name) de todos los clientes de la tabla de clientes(customer):
+Vamos a usar el motor Postgre SQL y la base de datos importada, para empezar a trabajar con la declaración SELECT para consultar datos de un ejemplo de columna. Este ejemplo usa la instrucción SELECT para encontrar los nombres (firstname) de todos los jugadores de la tabla de jugadores(players):
 ```sql
-SELECT first_name FROM customer;
+SELECT FirstName
+FROM Players;
 ```
 
-Ejemplo de salida:
-*![alt text](https://raw.githubusercontent.com/AgustinICAI/CursoCeroMBD2025/refs/heads/main/images/sql0001.png)
 
 En el ejemplo se ha añadido un punto y coma (;) al final de la instrucción SELECT. El punto y coma no forma parte de la instrucción SQL. Se utiliza para señalar a PostgreSQL el final de una declaración SQL. El punto y coma también se utiliza para separar dos sentencias SQL.
 
 ### Uso de la declaración SELECT para consultar datos de varias columnas de ejemplo
-Si queremos seleccionar nombre, apellido y correo electrónico de los clientes, se puede especificar estos nombres de columna en la cláusula SELECT como se muestra en la siguiente consulta:
+Si queremos seleccionar nombre, apellido, y algo de información de su carrera, se puede especificar estos nombres de columna en la cláusula SELECT como se muestra en la siguiente consulta:
 ```sql
-SELECT first_name,
-   last_name,
-   email
-FROM
-   customer;
+SELECT firstName,
+       lastName,
+       draftYear,
+       draftRound,
+       draftNumber
+FROM players;
 ```
 ###  Uso de la declaración SELECT para consultar todas las columnas de una tabla
-La siguiente consulta usa la instrucción SELECT para seleccionar datos de todas las columnas de la tabla de clientes:
+La siguiente consulta usa la instrucción SELECT para seleccionar datos de todas las columnas de la tabla de players:
 ```sql
-SELECT * FROM customer;
+SELECT *
+FROM players;
 ```
 
 En este ejemplo, usamos un asterisco (\*) en la cláusula SELECT, que es una forma abreviada de todas las columnas. En lugar de enumerar todas las columnas en la cláusula SELECT, solo usamos el asterisco (*) para ahorrar algo de escritura.
@@ -85,8 +86,10 @@ Un "alias" de columna le permite asignar un nombre temporal a una columna o expr
 
 A continuación, se ilustra la sintaxis del uso de un alias de columna:
 ```sql
-SELECT column_name AS alias_name
-FROM nombre_tabla;
+SELECT firstName AS nombre,
+       lastName AS apellido,
+       draftYear AS año_draft
+FROM players;
 ```
 
 En esta sintaxis, al column_name se le asigna un alias alias_name. La palabra clave AS es opcional, por lo que puede omitirla así:
@@ -97,27 +100,27 @@ FROM nombre_tabla;
 La siguiente sintaxis ilustra cómo establecer un alias para una expresión en la cláusula SELECT:
 
 ### Ejemplo de alias de columna de PostgreSQL
-Usaremos la tabla de "customer" de la base de datos de muestra para mostar cómo trabajar con alias de columna.
+Usaremos la tabla de "players" de la base de datos de muestra para mostar cómo trabajar con alias de columna.
 
 ```sql
-SELECT
-   first_name,
-   last_name AS apellido
-FROM customer;
+SELECT firstName AS nombre,
+       lastName AS apellido,
+       draftYear AS año_draft
+FROM players;
 
-SELECT
-   first_name,
-   last_name apellido
-FROM customer;
+SELECT firstName nombre,
+       lastName apellido,
+       draftYear año_draft
+FROM players;
 ```
 
 ## Ejemplo del uso de expresiones en la SELECT
-La siguiente consulta devuelve los nombres completos de todos los clientes. Construye el nombre completo concatenando el nombre, el espacio y el apellido:
+La siguiente consulta devuelve los nombres completos de todos los jugadores. Construye el nombre completo concatenando el nombre, el espacio y el apellido:
 ```sql
 SELECT
-   first_name || ' ' || last_name as nombre_completo
+   firstName || ' ' || lastName AS nombre_completo
 FROM
-    customer;
+    players;
 ```
 
 Se usa el || como el operador de concatenación que concatena una o más cadenas en una sola cadena.
@@ -126,16 +129,16 @@ Se usa el || como el operador de concatenación que concatena una o más cadenas
 La sentencia ORDER BY permite ordenador los elementos que se devuelven por el campo, por ejemplo, si del ejemplo anterior, quisieramos ordenar la salida, esta sería la query:
 ```sql
 SELECT
-   first_name || ' ' || last_name as nombre_completo
+   firstName || ' ' || lastName AS nombre_completo
 FROM
-    customer
+    players
 ORDER BY 1;
 
 /*También se podría haber escrito así*/
 SELECT
-   first_name || ' ' || last_name as nombre_completo
+   firstName || ' ' || lastName AS nombre_completo
 FROM
-    customer
+    players
 ORDER BY nombre_completo;
 ```
 

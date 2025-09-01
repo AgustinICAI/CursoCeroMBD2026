@@ -38,7 +38,7 @@ Aunque este dataset está preparado para sqlserver, dejo un script para hacer la
 2. Para lanzar la importación será necesario lanzar el siguiente comando desde un terminal (powershell, cmd (windows) o shell (linux,mac)):
 
   ```
-  ./psql.exe -U postgres -p 5432 -f "C:\Users\aglam\Downloads\archive\NBA_Database_optimizacion.sql"
+  ./psql.exe -U postgres -p 5432 -f "psql.exe -U postgres -p 5432 -f "C:\Users\tu\ruta\archive\import_script.sql""
   ```
 
 3. Problamente el anterior comando fallará, es necesario previamente lanzar el comando "psql" desde la ruta donde esté instalado o añadiendo su path en las variables de entorno del sistema (más info, preguntad a chatgpt).

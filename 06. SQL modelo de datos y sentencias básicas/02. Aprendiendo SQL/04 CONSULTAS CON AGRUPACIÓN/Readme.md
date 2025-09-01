@@ -7,12 +7,29 @@
 - Los atributos que se evalúan en la SELECT podrán ser, aquellos que participan en la agrupación dentro de la cláusula GROUP BY y si no son de agrupamiento, solo podrán figurar como argumento de funciones colectivas.
 
 ## Ejemplo 
-Obtener la duración media de las películas, y la media de días que está alquilada dependiendo de la categoría
+Promedio de altura y peso de los jugadores por posición
 ```sql
-select rating, avg(length), avg(rental_duration) from film
-group by rating
-order by rating
+SELECT 
+    CASE 
+        WHEN guard = true THEN 'Guard'
+        WHEN forward = true THEN 'Forward'
+        WHEN center = true THEN 'Center'
+    END AS position,
+    AVG(height) AS avg_height,
+    AVG(bodyWeight) AS avg_weight
+FROM players
+GROUP BY position
+ORDER BY position;
 ```
+
+Promedio de puntos y asistencias por jugador en player_statistics
+```sql
+SELECT playerId, AVG(points) AS avg_points, AVG(assists) AS avg_assists
+FROM player_statistics
+GROUP BY playerId
+ORDER BY playerId;
+```
+
 
 # Cláusula HAVING
 - Es una cláusula opcional de la SELECT asociada a GROUP BY.
@@ -33,3 +50,12 @@ se dan ambos casos.
 5. Ejecuta clausula SELECT.
 6. Ejecuta clausula ORDER BY.
 
+## Ejemplo: Obtener los jugadores que promedian más de 20 puntos por partido.
+
+```sql
+SELECT playerId, AVG(points) AS avg_points
+FROM player_statistics
+GROUP BY playerId
+HAVING AVG(points) > 20
+ORDER BY avg_points DESC;
+```
