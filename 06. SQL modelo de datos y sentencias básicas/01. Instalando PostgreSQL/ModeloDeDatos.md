@@ -1,5 +1,26 @@
 # Diccionario de datos NBA
 
+## Relaciones entre las tablas
+
+### Esquema de relaciones
+
+- **players.personId** → **player_statistics.personId**
+- **team_histories.teamId** → **games.hometeamId**, **games.awayteamId**, **team_statistics.teamId**
+- **games.gameId** → **team_statistics.gameId**, **player_statistics.gameId**
+
+### Diagrama relacional simplificado
+
+```mermaid
+erDiagram
+    players ||--o{ player_statistics : "personId"
+    games ||--o{ player_statistics : "gameId"
+    team_histories ||--o{ games : "teamId (hometeamId/awayteamId)"
+    team_histories ||--o{ team_statistics : "teamId"
+    games ||--o{ team_statistics : "gameId"
+````
+
+# Diccionario de datos NBA
+
 ## Tabla: `players` (Jugadores)
 
 | Campo         | Tipo   | Traducción        | Explicación |
@@ -152,4 +173,3 @@
 | reboundsTotal        | FLOAT     | Rebotes totales         | Total de rebotes capturados |
 | foulsPersonal        | FLOAT     | Faltas personales       | Faltas cometidas |
 | turnovers            | FLOAT     | Pérdidas                | Pérdidas de balón |
-| plusMinusPoints      | FLOAT     | +/-                     | Diferencia de puntos mientras estuvo en pista |
