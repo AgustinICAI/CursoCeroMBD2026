@@ -12,10 +12,8 @@ Es posible manejar varias tablas en una sentencia Select. Básicamente se puede 
 Supongamos que queremos comparar los puntos del jugador con el promedio de puntos del equipo en team_statistics. Aquí sí necesitamos calificar nombres porque points aparece en ambas tablas:
 ```sql
 SELECT ps.firstName, ps.lastName, ps.points AS player_points, ts.points AS team_points
-FROM player_statistics ps
-JOIN team_statistics ts 
-  ON ps.playerteamName = ts.teamName
-  AND ps.gameId = ts.gameId;
+FROM player_statistics ps, team_statistics ts 
+WHERE ps.playerteamName = ts.teamName AND ps.gameId = ts.gameId;
 ``` 
 
 ps.points → puntos del jugador
@@ -33,7 +31,65 @@ Son sentencias subordinadas en las que se especifica algún atributo de alguna t
     - Predicados IN.
     - Predicados EXISTS.
 
+Ej.: Obtener el nombre y ciudad de los equipos que en un partido han anotado más que su propia media.
+```
+SELECT 
+    ts.teamName,
+    ts.teamCity,
+    ts.teamScore
+FROM team_statistics ts
+WHERE ts.teamScore > (
+    SELECT AVG(ts2.teamScore)
+    FROM team_statistics ts2
+    WHERE ts2.teamId = ts.teamId
+);
+```
+
 - Se llama sentencia externa, a la que no esta subordinada a ninguna. O también sentencia de primer nivel.
+
+```
+SELECT 
+    ts.teamName,
+    ts.teamCity,
+    ts.teamScore
+FROM team_statistics ts,
+     (SELECT teamId, AVG(teamScore) AS media_puntos
+      FROM team_statistics
+      GROUP BY teamId) p
+WHERE ts.teamId = p.teamId
+  AND ts.teamScore > p.media_puntos;
+```
+### Eficiencia de subqueries correlacionadas vs no correlacionadas
+
+Al comparar las dos formas de obtener los equipos que anotaron más puntos que la media de su propio equipo:
+
+- **Subquery correlacionada**  
+  ```sql
+  WHERE ts.teamScore > (
+      SELECT AVG(ts2.teamScore)
+      FROM team_statistics ts2
+      WHERE ts2.teamId = ts.teamId
+  )
+  ```
+  - Se ejecuta **una vez por cada fila** de la tabla principal.  
+  - Menos eficiente para tablas grandes.  
+  - PostgreSQL puede optimizar parcialmente, pero sigue siendo más costosa en general.
+
+- **Subquery no correlacionada / derived table**  
+  ```sql
+  FROM team_statistics ts,
+       (SELECT teamId, AVG(teamScore) AS media_puntos
+        FROM team_statistics
+        GROUP BY teamId) p
+  WHERE ts.teamId = p.teamId
+    AND ts.teamScore > p.media_puntos;
+  ```
+  - La subquery se ejecuta **una sola vez** para todos los equipos.  
+  - Más eficiente y escalable, especialmente con tablas grandes.  
+  - Permite usar índices sobre `teamId` para acelerar la unión.
+
+**Conclusión:**  
+> Siempre que sea posible, conviene convertir subqueries correlacionadas en no correlacionadas usando `GROUP BY` y joins/derived tables, ya que esto mejora la eficiencia y el rendimiento de las consultas.
 
 
 ## Producto Cartesiano
