@@ -1,22 +1,35 @@
-/*NUM JUGADORES QUE NO SON DE EEUU O NO SE SABE*/
+# Ejercicios Resueltos SQL
+
+---
+
+**NUM JUGADORES QUE NO SON DE EEUU O NO SE SABE**
+```sql
 select count(*)
 from PLAYERS
 where country != 'USA' or country is null
+```
 
-/*NUM JUGADORES DISTINTOS QUE NO SON DE EEUU O NO SE SABE*/
+**NUM JUGADORES DISTINTOS QUE NO SON DE EEUU O NO SE SABE**
+```sql
 select count( distinct firstname || lastname)
 from PLAYERS
 where country != 'USA' or country is null
-/*Filtrar jugadores que comiencen con “A” y ordenar descendente, mostrando solo nombres distintos.*/
+```
+**Filtrar jugadores que comiencen con “A” y ordenar descendente, mostrando solo nombres distintos.**
+```sql
 select distinct firstname
 from players
 where firstname like 'A%'
 order by firstname desc
-/*Seleccionar la posición de los jugadores draftados después de 2010*/
+```
+**Seleccionar la posición de los jugadores draftados después de 2010**
+```sql
 select firstname, lastname, guard, forward, center
 from players
 where draftyear > 2010
-/*Seleccionar la posición de los jugadores draftados después de 2010 en un único campo con un CASE*/
+```
+**Seleccionar la posición de los jugadores draftados después de 2010 en un único campo con un CASE**
+```sql
 SELECT 
     firstname,
     lastname,
@@ -28,15 +41,19 @@ SELECT
     END AS position
 FROM players
 WHERE draftyear > 2010;
+```
 
 
-/*Obtener el número de jugadores que son de Europa*/
+**Obtener el número de jugadores que son de Europa**
+```sql
 SELECT *
 FROM players
 WHERE country IN ('Italy', 'Czech Republic', 'Sweden', 'United Kingdom', 'Montenegro', 'Ireland', 'Germany', 'Macedonia', 'Finland', 'Ukraine', 'Latvia', 'Slovenia', 'Greece', 'France', 'Estonia', 'Israel', 'Denmark', 'Bosnia and Herzegovina', 'Turkey', 'Switzerland', 'Hungary', 'Russia', 'Norway', 'Scotland', 'Netherlands', 'Romania', 'Serbia', 'Lithuania', 'Bulgaria', 'Spain', 'Croatia', 'Georgia', 'Belgium', 'Poland');
+```
 
 
-/*Obtener el número de jugadores que comparten país con "Pau Gasol"*/
+**Obtener el número de jugadores que comparten país con "Pau Gasol"**
+```sql
 select *
 from players
 where country = (select country 
@@ -45,14 +62,16 @@ where country = (select country
 	and personId != (select personId 
 				 from players
 				 where firstname = 'Pau' and lastname = 'Gasol')
+```
 
 				 
-/* Obtener jugadores que no son centers y que miden más de la altura promedio.*/
+** Obtener jugadores que no son centers y que miden más de la altura promedio.**
+```sql
 select *
 from players
 where center = false 
 and height >  (select avg(height )
 				from players)
-				
+```
 
-			 
+
