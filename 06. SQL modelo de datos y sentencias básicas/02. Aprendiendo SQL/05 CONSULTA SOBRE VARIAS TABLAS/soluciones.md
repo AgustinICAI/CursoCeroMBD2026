@@ -15,3 +15,15 @@ where
 	ps.playerteamname = gt_minutes.playerteamname and
 	ps.numminutes > gt_minutes.numminutes 
 ```
+
+## Jugador que anotó más del 50% de los puntos de su equipo en un partido
+
+```sql
+select ps.points , ts.teamscore, ps.* 
+from player_statistics ps , team_statistics ts 
+where ps.gameid = ts.gameid and 
+      ps.playerteamname = ts.teamname and 
+      ps.points > ts.teamscore * 0.5
+order by ps.points / ts.teamscore desc
+	
+```
