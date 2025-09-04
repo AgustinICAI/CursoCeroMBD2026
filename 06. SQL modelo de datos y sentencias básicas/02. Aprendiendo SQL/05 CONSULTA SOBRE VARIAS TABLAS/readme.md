@@ -111,8 +111,7 @@ Esto genera muchas filas y puede servir para explicar por qué es importante sie
 ```sql
 SELECT ps.firstName, ps.lastName, ps.gameId, ps.threePointersMade AS player_triples, ts.threePointersMade AS team_triples
 FROM player_statistics ps, team_statistics ts
-WHERE ps.playerteamName = ts.teamName
-  AND ps.gameId = ts.gameId
+WHERE ps.gameId = ts.gameId
   AND ps.threePointersMade > 0.5 * ts.threePointersMade
 ORDER BY ps.threePointersMade DESC
 LIMIT 10;
