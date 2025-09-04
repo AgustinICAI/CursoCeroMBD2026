@@ -27,3 +27,18 @@ where ps.gameid = ts.gameid and
 order by ps.points / ts.teamscore desc
 	
 ```
+
+## Jugador que ha jugado en más de 3 equipos diferentes a lo largo de su carrera
+
+```sql
+select numTeams, p.*
+from players p, (
+	select personid, count(distinct playerteamname) as numTeams
+	from player_statistics ps
+	group by personid 
+	having count(distinct playerteamname) > 3) as different_teams
+where p.personid = different_teams.personid
+order by numTeams desc
+```
+
+Jugador que ha jugado en más de 3 equipos diferentes a lo largo de su carrera y muestralos por pantalla
