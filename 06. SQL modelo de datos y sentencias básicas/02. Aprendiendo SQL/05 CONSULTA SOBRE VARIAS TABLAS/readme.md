@@ -32,7 +32,7 @@ Son sentencias subordinadas en las que se especifica algún atributo de alguna t
     - Predicados EXISTS.
 
 Ej.: Obtener el nombre y ciudad de los equipos que en un partido han anotado más que su propia media.
-```
+```sql
 SELECT 
     ts.teamName,
     ts.teamCity,
@@ -47,7 +47,7 @@ WHERE ts.teamScore > (
 
 - Se llama sentencia externa, a la que no esta subordinada a ninguna. O también sentencia de primer nivel.
 
-```
+```sql
 SELECT 
     ts.teamName,
     ts.teamCity,
