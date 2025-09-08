@@ -41,4 +41,34 @@ where p.personid = different_teams.personid
 order by numTeams desc
 ```
 
-Jugador que ha jugado en más de 3 equipos diferentes a lo largo de su carrera y muestralos por pantalla
+## Jugador que ha jugado en más de 3 equipos diferentes a lo largo de su carrera y muestralos por pantalla
+```sql
+select p.firstname , p.lastname, p.birthdate , equipos_jugados.*
+from players p
+join (
+	select personid, ps.playerteamname, count(*)
+	from player_statistics ps
+	group by personid, playerteamname
+	having personid in (select personid
+		from player_statistics ps
+		group by personid 
+		having count(distinct playerteamname) > 3)) as equipos_jugados 
+	on p.personid = equipos_jugados.personid
+```
+
+## ejercicio a medias del draft
+```
+select p.firstname , p.lastname, p.draftyear , puntos_temporada.*
+from players p
+join (
+	SELECT 
+	    CASE 
+	        WHEN EXTRACT(MONTH FROM gamedate) >= 9 
+	            THEN EXTRACT(YEAR FROM gamedate)       -- de sep a dic: año actual
+	        ELSE EXTRACT(YEAR FROM gamedate) - 1       -- de ene a jun: año anterior
+	    END AS temporada,
+	    ps.personid, sum(ps.points) as puntos
+	FROM player_statistics ps 
+	GROUP BY ps.personid,temporada) AS puntos_temporada on p.personid = puntos_temporada.personid
+where puntos_temporada.temporada = draftyear
+```
