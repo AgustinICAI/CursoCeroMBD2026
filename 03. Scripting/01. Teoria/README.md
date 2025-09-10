@@ -1,4 +1,6 @@
 Bash es también es un lenguaje interpretado muy utilizado para la creación de scripts en Linux.
+
+
 Estos scripts contienen una serie de instrucciones que se comunicarán con el Bash (si es el que se indica por defecto) para que este ejecute las acciones pertinentes.
 Las instrucciones a utilizar son las mismas que se lanzarían en una consola de bash, pero la ventaja que aporta es el hecho de poder incluir estructuras condicionales, bucles, etc.
 
@@ -87,6 +89,8 @@ Los comentarios son una parte esencial en cualquier pieza de código. Son partes
 if [condición]; 
 then 
     <código> 
+elif
+    <código>
 else 
     <código> 
 fi
@@ -122,11 +126,4 @@ do
  echo "Hello $i"
 done
 ```
-
-
-
-
-
-
-
 
