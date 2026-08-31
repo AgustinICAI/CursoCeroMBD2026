@@ -2,7 +2,7 @@
 
 Se recomienda trabajar con el Ide de Microsoft llamado Code, y conectar la máquina virtual con el Ide. Se sigue trabajando en entorno windows, pero lo que pasa ejecutando en una máquina linux.
 
-#### Plus*: Integrar con copilot
+### Integrar con GitHub Copilot
 
 ## Instalar Postgre (para aprender SQL durante le curso0, luego podéis borrarlo)
 
@@ -21,7 +21,7 @@ terminales según OS:
     
 - Mac OS:
 
-    1. [iTerm2](https://iterm2.com/) + [OhMyZsh](https://ohmyz.sh/)
+    1. La terminal nativa + [OhMyZsh](https://ohmyz.sh/)
 
 - Linux:
     1. La terminal nativa + [OhMyZsh](https://ohmyz.sh/)

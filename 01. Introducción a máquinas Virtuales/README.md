@@ -16,7 +16,7 @@ El overhead que introducen los hipervisor modernos está entre 9-12% de CPU.
 - Hyper-V (opción Windows)
 - WSL
 
-![alt text](https://raw.githubusercontent.com/AgustinICAI/CursoCeroMBD2025/refs/heads/main/images/virtualizacionArchitecture.png)
+![alt text](https://raw.githubusercontent.com/AgustinICAI/CursoCeroMBD2026/refs/heads/main/images/virtualizacionArchitecture.png)
 
 
 ## Otros tipos de virtualizaciones
@@ -43,12 +43,8 @@ You must be running Windows 10 version 2004 and higher (Build 19041 and higher) 
  wsl --unregister Ubuntu
 ```
 
-### fyi: WSL 2.0 
-
-WSL aunque supone un mayor consumo de recursos corre a nivel de kernel, por lo que simula prácticamente una máquina virtual corriendo en linux.
-
 # MACOS
 
-ya disponéis del terminal de linux del propio MAC.
+Ya disponéis del terminal de linux del propio MAC.
 
 

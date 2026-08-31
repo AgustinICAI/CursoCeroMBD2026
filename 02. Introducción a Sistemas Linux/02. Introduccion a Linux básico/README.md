@@ -14,15 +14,11 @@ El directorio padre, conocido como directorio root, es el '/'. De este cuelgan e
 | Directorio | Comentario |
 | ---------- | ---------- |
 | /etc | Ficheros de configuración específicos para la máquina. |
-| /etc/rc.d | Ficheros de configuración del arranque. |
 | /bin | Ejecutables del sistema |
 | /lib | Bibliotecas de los programas de /sbin y /bin. |
 | /usr | Ficheros compartibles por todo el sistema. Tiene un árbol de subdirectorios con una estructura similar al raíz. Suele montarse sólo para lectura. |
-| /usr/local | Programas instalados independientes del sistema operativo. |
-| /var | Ficheros varios (administrativos, históricos, bloqueos, ...). |
 | /tmp | Ficheros temporales. |
 | /home/xxxx | Datos de las cuentas de los usuarios |
-
 
 Casi la totalidad de los directorios está gestionada por root, por lo que deben estar bien protegidos contra intrusiones de otros usuarios.
 

@@ -98,13 +98,13 @@ Cuenta cuántas palabras diferentes contiene.
 ## Ejercicio 10 – Pipeline completo
 Archivo `animales.txt`:
 ```
-2025-09-01,gato
-2025-09-01,perro
-2025-09-02,gato
-2025-09-02,conejo
-2025-09-03,perro
-2025-09-03,perro
-2025-09-03,gato
+2026-09-01,gato
+2026-09-01,perro
+2026-09-02,gato
+2026-09-02,conejo
+2026-09-03,perro
+2026-09-03,perro
+2026-09-03,gato
 ```
 Genera `recuento.txt` con el número de veces que aparece cada animal ordenado alfabéticamente.
 
