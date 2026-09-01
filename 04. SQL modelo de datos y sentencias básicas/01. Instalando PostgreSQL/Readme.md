@@ -38,7 +38,7 @@ Aunque este dataset está preparado para sqlserver, dejo un script para hacer la
 2. Para lanzar la importación será necesario lanzar el siguiente comando desde un terminal (powershell, cmd (windows) o shell (linux,mac)):
 
   ```
-  psql.exe -U postgres -p 5432 -f "C:\Users\tu\ruta\archive\import_script.sql"
+  psql.exe -U postgres -p 5432 -f "./import_script.sql"
   
   ```
 
