@@ -67,6 +67,16 @@ A continuación, utiliza ese identificador para obtener todas sus estadísticas 
 
 **Objetivo:** entender el concepto de identificador y cómo utilizarlo para localizar los registros relacionados con un jugador.
 
+```sql
+select count(*) as num_partidos
+from player_statistics
+where personid = (select personid
+				  FROM players
+				  where firstname = 'Kobe' and lastname = 'Bryant'
+				  ) 
+```
+
+
 ---
 
 # 02. SELECT Y EXPRESIONES
