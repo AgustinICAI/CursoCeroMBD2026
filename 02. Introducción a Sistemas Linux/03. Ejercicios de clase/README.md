@@ -114,6 +114,12 @@ Maria,28,Chile
 Pedro,35,Argentina
 ```
 Muestra solo la segunda columna (Edad) y guarda en `columna2.txt`.
+#### Solución
+```bash
+cat datos.csv | awk -F',' '{print $2}'
+datos.csv | cut -d',' -f2
+```
+
 
 ---
 ## Ejercicio 9 – Contar palabras únicas
@@ -127,6 +133,10 @@ pera
 banana
 ```
 Cuenta cuántas palabras diferentes contiene.
+#### Solución
+```bash
+cat palabras.txt | sort | uniq | wc -l
+```
 
 ---
 ## Ejercicio 10 – Pipeline completo
@@ -142,3 +152,7 @@ Archivo `animales.txt`:
 ```
 Genera `recuento.txt` con el número de veces que aparece cada animal ordenado alfabéticamente.
 
+#### Solución
+```bash
+cat animales.txt | awk -F',' '{print $2}' | sort | uniq -c > recuento.txt
+```
