@@ -10,6 +10,11 @@ Para practicar Linux
 ```
 Cuenta el número de líneas y guarda el resultado en `lineas.txt`.
 
+#### Solución
+```bash
+cat ejercicio1.txt | wc -l > lineas.txt
+```
+
 ---
 ## Ejercicio 2 – Filtrar palabras
 Archivo `texto.txt`:
@@ -22,9 +27,19 @@ Final del proceso
 ```
 Muestra las líneas que contengan la palabra "Error".
 
+#### Solución
+```bash
+cat ejercicio1.txt | grep -i "error"
+```
+
 ---
 ## Ejercicio 3 – Contar ocurrencias
 Archivo `texto.txt` (mismo que el anterior). Cuenta cuántas veces aparece "Error".
+
+#### Solución
+```bash
+cat ejercicio1.txt | grep -io "error" | wc -l
+```
 
 ---
 ## Ejercicio 4 – Ordenar y eliminar duplicados
@@ -39,6 +54,10 @@ Pedro
 Luis
 ```
 Muestra la lista de nombres ordenada alfabéticamente sin duplicados.
+#### Solución
+```bash
+cat nombres.txt | sort | uniq
+```
 
 ---
 ## Ejercicio 5 – Primeras líneas
@@ -52,10 +71,19 @@ Archivo `log.txt`:
 [INFO] Cierre del sistema
 ```
 Muestra las primeras 5 líneas.
+#### Solución
+```bash
+cat log.txt | head -5
+```
 
 ---
 ## Ejercicio 6 – Últimas líneas
 Archivo `log.txt` (mismo que el anterior). Muestra las últimas 3 líneas y guárdalas en `ultimos.txt`.
+
+#### Solución
+```bash
+cat log.txt | tail -3 > ultimos.txt
+```
 
 ---
 ## Ejercicio 7 – Combinando comandos
@@ -68,6 +96,12 @@ La línea más larga de todas en este archivo
 Pequeña
 ```
 Muestra las 2 líneas más largas.
+#### Solución
+```bash
+cat documento.txt | awk '{print length  "-" $0}' | sort -n | tail -2
+# Quedándome la línea original
+cat documento.txt | awk '{print length  "-" $0}' | sort -n | tail -2 | cut -d'-' -f2
+```
 
 ---
 ## Ejercicio 8 – Extraer columnas
