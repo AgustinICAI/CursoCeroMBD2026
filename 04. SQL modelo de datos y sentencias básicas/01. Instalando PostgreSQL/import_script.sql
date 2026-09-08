@@ -480,7 +480,76 @@ weekNumber INT
 );
 
 -- ============================================================
--- 11. IMPORTACIÓN DE CSV
+-- 11. RELACIONES ENTRE TABLAS
+-- ============================================================
+
+-- team_histories es el catálogo de equipos utilizado por el resto
+-- de las tablas del modelo.
+ALTER TABLE team_histories
+ADD CONSTRAINT team_histories_pkey PRIMARY KEY (teamId);
+
+ALTER TABLE games
+ADD CONSTRAINT games_hometeam_fkey
+    FOREIGN KEY (hometeamId) REFERENCES team_histories (teamId),
+ADD CONSTRAINT games_awayteam_fkey
+    FOREIGN KEY (awayteamId) REFERENCES team_histories (teamId),
+ADD CONSTRAINT games_winner_fkey
+    FOREIGN KEY (winner) REFERENCES team_histories (teamId);
+
+ALTER TABLE team_statistics
+ADD CONSTRAINT team_statistics_game_fkey
+    FOREIGN KEY (gameId) REFERENCES games (gameId),
+ADD CONSTRAINT team_statistics_team_fkey
+    FOREIGN KEY (teamId) REFERENCES team_histories (teamId),
+ADD CONSTRAINT team_statistics_opponent_team_fkey
+    FOREIGN KEY (opponentTeamId) REFERENCES team_histories (teamId);
+
+ALTER TABLE player_statistics
+ADD CONSTRAINT player_statistics_player_fkey
+    FOREIGN KEY (personId) REFERENCES players (personId),
+ADD CONSTRAINT player_statistics_game_fkey
+    FOREIGN KEY (gameId) REFERENCES games (gameId),
+ADD CONSTRAINT player_statistics_team_fkey
+    FOREIGN KEY (playerteamId) REFERENCES team_histories (teamId),
+ADD CONSTRAINT player_statistics_opponent_team_fkey
+    FOREIGN KEY (opponentteamId) REFERENCES team_histories (teamId);
+
+ALTER TABLE player_statistics_extended
+ADD CONSTRAINT player_statistics_extended_player_fkey
+    FOREIGN KEY (personId) REFERENCES players (personId),
+ADD CONSTRAINT player_statistics_extended_game_fkey
+    FOREIGN KEY (gameId) REFERENCES games (gameId),
+ADD CONSTRAINT player_statistics_extended_team_fkey
+    FOREIGN KEY (playerteamId) REFERENCES team_histories (teamId),
+ADD CONSTRAINT player_statistics_extended_opponent_team_fkey
+    FOREIGN KEY (opponentTeamId) REFERENCES team_histories (teamId);
+
+ALTER TABLE team_statistics_extended
+ADD CONSTRAINT team_statistics_extended_game_fkey
+    FOREIGN KEY (gameId) REFERENCES games (gameId),
+ADD CONSTRAINT team_statistics_extended_team_fkey
+    FOREIGN KEY (teamId) REFERENCES team_histories (teamId),
+ADD CONSTRAINT team_statistics_extended_opponent_team_fkey
+    FOREIGN KEY (opponentTeamId) REFERENCES team_histories (teamId);
+
+ALTER TABLE league_schedule_24_25
+ADD CONSTRAINT league_schedule_24_25_game_fkey
+    FOREIGN KEY (gameId) REFERENCES games (gameId),
+ADD CONSTRAINT league_schedule_24_25_home_team_fkey
+    FOREIGN KEY (hometeamId) REFERENCES team_histories (teamId),
+ADD CONSTRAINT league_schedule_24_25_away_team_fkey
+    FOREIGN KEY (awayteamId) REFERENCES team_histories (teamId);
+
+ALTER TABLE league_schedule_25_26
+ADD CONSTRAINT league_schedule_25_26_game_fkey
+    FOREIGN KEY (gameId) REFERENCES games (gameId),
+ADD CONSTRAINT league_schedule_25_26_home_team_fkey
+    FOREIGN KEY (homeTeamId) REFERENCES team_histories (teamId),
+ADD CONSTRAINT league_schedule_25_26_away_team_fkey
+    FOREIGN KEY (awayTeamId) REFERENCES team_histories (teamId);
+
+-- ============================================================
+-- 12. IMPORTACIÓN DE CSV
 -- ============================================================
 
 \copy players(personId,firstName,lastName,birthDate,school,country,heightInches,bodyWeightLbs,jersey,guard,forward,center,dleagueFlag,nbaFlag,gamesPlayedFlag,draftYear,draftRound,draftNumber,fromYear,toYear) FROM './Players.csv' WITH (FORMAT CSV, HEADER, ENCODING 'LATIN1');
@@ -502,7 +571,7 @@ weekNumber INT
 \copy league_schedule_25_26(gameId,gameDateTimeEst,gameDay,homeTeamId,awayTeamId,homeTeamName,homeTeamCity,awayTeamName,awayTeamCity,arenaName,arenaCity,arenaState,gameLabel,gameSubLabel,gameSubtype,seriesGameNumber,weekNumber) FROM './LeagueSchedule25_26.csv' WITH (FORMAT CSV, HEADER, ENCODING 'LATIN1');
 
 -- ============================================================
--- 12. VISTAS PARA TRABAJAR CON NUMMINUTES
+-- 13. VISTAS PARA TRABAJAR CON NUMMINUTES
 -- ============================================================
 
 CREATE VIEW player_statistics_view AS
@@ -534,7 +603,7 @@ END AS numMinutesDecimal
 FROM player_statistics_extended p;
 
 -- ============================================================
--- 13. COMPROBAR IMPORTACIÓN
+-- 14. COMPROBAR IMPORTACIÓN
 -- ============================================================
 
 SELECT 'players' AS tabla, COUNT(*) AS registros FROM players
