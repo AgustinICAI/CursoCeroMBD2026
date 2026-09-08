@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/AgustinICAI/CursoCeroMBD2026/refs/heads/main/images/logo.png" width="100"> CursoCeroMBD
+# <img src="https://raw.githubusercontent.com/AgustinICAI/CursoCeroMBD2026/refs/heads/main/images/logo.png" width="100"> Curso Cero MBD
 
 ### Repositorio para el temario del curso 0 del Máster de Big Data, de la Escuela Técnica Superior de Ingeniería de ICAI (Universidad Pontificia Comillas)
 En este repositorio encontrarás el temario que se imparcirá durante el curso 0. Durante las semanas previas es importante, sobre todo si no se ha trabajado con algunas de las tecnologías que aquí se citan, que se revise el temario y se pruebe a hacer las tareas planteadas.
