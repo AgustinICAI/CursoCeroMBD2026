@@ -85,7 +85,8 @@ erDiagram
 | `seasonActiveTill` | FLOAT | Último año activo | Última temporada registrada para esa franquicia |
 | `league` | TEXT | Liga | Liga a la que perteneció |
 
-> No se ha definido una PK estricta en esta tabla porque el dataset puede contener duplicados.
+> `teamId` es la clave primaria de esta tabla y se utiliza como referencia desde
+> los partidos, calendarios y estadísticas.
 
 ---
 
